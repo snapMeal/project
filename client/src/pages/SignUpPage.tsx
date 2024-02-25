@@ -71,8 +71,8 @@ export default function SignUpPage() {
   return (
     // <section className="min-h-screen mx-auto container flex flex-col justify-center items-center">
     <section className="min-h-screen flex">
-      <div className="bg-primary grow pattern">
-      <img className="h-full w-full object-cover" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+      <div className="bg-primary grow pattern relative">
+        <img className="h-full absolute left-0 top-0 w-full object-cover" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
       </div>
       <div className="flex flex-col justify-center items-center gap-8 h-screen w-full md:w-128">
         <h1 className="text-2xl md:text-4xl font-bold">Create an account</h1>

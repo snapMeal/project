@@ -6,18 +6,36 @@ import { toast } from "react-toastify";
 
 export default function SignUpPage() {
   const [name, setName] = useState<InputState>({ value: "", hasError: false });
-  const [email, setEmail] = useState<InputState>({ value: "", hasError: false });
-  const [password, setPassword] = useState<InputState>({ value: "", hasError: false });
-  const [confirmPassword, setConfirmPassword] = useState<InputState>({ value: "", hasError: false });
-  const [username, setUsername] = useState<InputState>({ value: "", hasError: false });
+  const [email, setEmail] = useState<InputState>({
+    value: "",
+    hasError: false,
+  });
+  const [password, setPassword] = useState<InputState>({
+    value: "",
+    hasError: false,
+  });
+  const [confirmPassword, setConfirmPassword] = useState<InputState>({
+    value: "",
+    hasError: false,
+  });
+  const [username, setUsername] = useState<InputState>({
+    value: "",
+    hasError: false,
+  });
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    toast.dismiss()
+    toast.dismiss();
     let hasError = false;
 
     //Pattern matching
-    if (!email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+    if (
+      !email.value
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        )
+    ) {
       setEmail((prev) => ({ ...prev, hasError: true }));
       toast.error("Please enter a valid email address", {
         position: "bottom-right",
@@ -66,31 +84,45 @@ export default function SignUpPage() {
     if (hasError) return;
 
     //TODO API CALL HERE
-  }
+  };
 
   return (
     // <section className="min-h-screen mx-auto container flex flex-col justify-center items-center">
     <section className="min-h-screen flex">
       <div className="bg-primary grow pattern relative">
-        <img className="h-full absolute left-0 top-0 w-full object-cover" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+        <img
+          className="h-full absolute left-0 top-0 w-full object-cover"
+          src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
       </div>
       <div className="flex flex-col justify-center items-center gap-8 h-screen w-full md:w-128">
         <h1 className="text-2xl md:text-4xl font-bold">Create an account</h1>
-        <form onSubmit={handleSubmit} action=''  className="p-2 md:p-8 flex flex-col gap-4 w-full">
+        <form
+          onSubmit={handleSubmit}
+          action=""
+          className="p-2 md:p-8 flex flex-col gap-4 w-full"
+        >
           <div className="flex flex-wrap gap-4">
             <Input
               className="w-48 grow"
               placeHolder="Enter Your Username"
               value={username.value}
               hasError={username.hasError}
-              onChange={(e) => setUsername({ value: e.target.value, hasError: false })}
-            >Username</Input>
+              onChange={(e) =>
+                setUsername({ value: e.target.value, hasError: false })
+              }
+            >
+              Username
+            </Input>
             <Input
               className="w-48 grow"
               placeHolder="Enter Your Name"
               value={name.value}
               hasError={name.hasError}
-              onChange={(e) => setName({ value: e.target.value, hasError: false })}
+              onChange={(e) =>
+                setName({ value: e.target.value, hasError: false })
+              }
             >
               Display Name
             </Input>
@@ -100,7 +132,9 @@ export default function SignUpPage() {
             placeHolder="example@website.com"
             value={email.value}
             hasError={email.hasError}
-            onChange={(e) => setEmail({ value: e.target.value, hasError: false })}
+            onChange={(e) =>
+              setEmail({ value: e.target.value, hasError: false })
+            }
           >
             Email
           </Input>
@@ -110,7 +144,9 @@ export default function SignUpPage() {
             type="password"
             value={password.value}
             hasError={password.hasError}
-            onChange={(e) => setPassword({ value: e.target.value, hasError: false })}
+            onChange={(e) =>
+              setPassword({ value: e.target.value, hasError: false })
+            }
           >
             Password
           </Input>
@@ -120,14 +156,23 @@ export default function SignUpPage() {
             type="password"
             value={confirmPassword.value}
             hasError={confirmPassword.hasError}
-            onChange={(e) => setConfirmPassword({ value: e.target.value, hasError: false })}
+            onChange={(e) =>
+              setConfirmPassword({ value: e.target.value, hasError: false })
+            }
           >
             Confirm Password
           </Input>
-          <Button className="mt-8" color="primary">Create Account</Button>
-          <h1 className="text-center text-text/70">Already have an account? <Link className="text-accent" to='/signin'>Sign in</Link></h1>
+          <Button className="mt-8" color="primary">
+            Create Account
+          </Button>
+          <h1 className="text-center text-text/70">
+            Already have an account?{" "}
+            <Link className="text-accent" to="/signin">
+              Sign in
+            </Link>
+          </h1>
         </form>
       </div>
     </section>
-  )
+  );
 }

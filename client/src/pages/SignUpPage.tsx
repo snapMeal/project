@@ -3,6 +3,7 @@ import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { useState, FormEvent } from "react";
 import { toast } from "react-toastify";
+import { InputState } from "../interface/types";
 
 export default function SignUpPage() {
   const [name, setName] = useState<InputState>({ value: "", hasError: false });

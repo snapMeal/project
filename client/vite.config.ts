@@ -21,6 +21,12 @@ export default defineConfig({
             type: "image/png",
             purpose: "any maskable"
           },
+          {
+            src: "/256.png",
+            sizes: "256x256",
+            type: "image/png",
+            purpose: "any maskable"
+          },
         ],
       },
       // add this to cache all the imports

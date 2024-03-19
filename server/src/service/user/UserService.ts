@@ -1,10 +1,10 @@
-import { userEntity } from "../../entity/user";
+import { findById } from "../../repo/user";
 import { IUser } from "../../interface/user";
 import { IUserService } from "./IUserService";
 
 class singleton implements IUserService{
     login(payload:IUser){
-        console.log(userEntity.findById(""))
+        console.log(findById(""))
         return payload;
     }
 }

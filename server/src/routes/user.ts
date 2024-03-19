@@ -4,6 +4,7 @@ import { userController } from "../controller/user";
 
 const userRouter = Router();
 
-userRouter.get("/user/login", asyncHandler(userController.login));
+userRouter.post("/user/login", asyncHandler(userController.login));
+userRouter.post("/user/signup", asyncHandler(userController.signup));
 
 export { userRouter };

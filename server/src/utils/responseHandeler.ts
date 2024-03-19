@@ -1,10 +1,8 @@
-import { Response } from "express";
-
-export const sendResponse = (
-    res: Response,
+export const APIResponse = (
     message: string,
     status: number,
-    success?: boolean
-): void => {
-    res.json({ message: message, success: success }).status(status);
+    data: any,
+    success: boolean = true
+) => {
+    return { message, success, status, data };
 };

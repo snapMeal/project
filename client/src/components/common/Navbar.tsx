@@ -27,7 +27,7 @@ function Navbar(props: { margin?: boolean }) {
               </>
             ) : (
               <>
-                <Link to="/dashboard">
+                <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -98,7 +98,7 @@ function Navbar(props: { margin?: boolean }) {
       </header>
       {isSignedIn && (
         <header className="bg-background border-t shadow-inner md:hidden fixed bottom-0 left-0 w-full flex items-center justify-center gap-16 px-8 py-4">
-          <Link to="/dashboard">
+          <Link to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

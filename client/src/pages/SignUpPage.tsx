@@ -97,7 +97,7 @@ export default function SignUpPage() {
           alt=""
         />
       </div>
-      <div className="flex flex-col justify-center items-center gap-8 h-screen w-full md:w-128">
+      <div className="flex flex-col justify-center items-center gap-8 h-screen w-full md:w-128 p-4">
         <h1 className="text-2xl md:text-4xl font-bold">Create an account</h1>
         <form
           onSubmit={handleSubmit}

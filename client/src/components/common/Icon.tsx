@@ -1,4 +1,4 @@
-function Icon(props:{className?:string}) {
+function Icon(props: { className?: string }) {
   return (
     <svg
       className={props.className}

@@ -4,9 +4,10 @@ import Input from "../components/common/Input";
 import { useState, FormEvent } from "react";
 import { toast } from "react-toastify";
 import { InputState } from "../interface/types";
+import axios from "../axios";
 
-export default function SignUpPage() {
-  const [name, setName] = useState<InputState>({ value: "", hasError: false });
+export default function SignUpPage()
+{
   const [email, setEmail] = useState<InputState>({
     value: "",
     hasError: false,
@@ -44,13 +45,6 @@ export default function SignUpPage() {
       hasError = true;
     }
 
-    if (!name.value.match(/[\S\s]+[\S]+/)) {
-      setName((prev) => ({ ...prev, hasError: true }));
-      toast.error("Please enter a valid name", {
-        position: "bottom-right",
-      });
-      hasError = true;
-    }
     if (!password.value.match(/[\S\s]+[\S]+/)) {
       setPassword((prev) => ({ ...prev, hasError: true }));
       toast.error("Please enter a valid password", {
@@ -84,7 +78,22 @@ export default function SignUpPage() {
 
     if (hasError) return;
 
-    //TODO API CALL HERE
+    try
+    {
+      let response = await axios.post("/user/signup", {
+        email: email.value,
+        password: password.value,
+        username: username.value,
+      });
+      console.log(response);
+    }
+    catch(e: any)
+    {
+      console.log(e);
+      toast.error(e?.response?.data?.message, {
+        position: "bottom-right",
+      });
+    }
   };
 
   return (
@@ -115,17 +124,6 @@ export default function SignUpPage() {
               }
             >
               Username
-            </Input>
-            <Input
-              className="w-48 grow"
-              placeHolder="Enter Your Name"
-              value={name.value}
-              hasError={name.hasError}
-              onChange={(e) =>
-                setName({ value: e.target.value, hasError: false })
-              }
-            >
-              Display Name
             </Input>
           </div>
           <Input

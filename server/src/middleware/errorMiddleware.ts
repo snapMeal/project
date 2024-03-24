@@ -8,7 +8,7 @@ export function errorMiddleware(
     res: Response,
     next: NextFunction
 ) {
-    res.json(
+    res.status(error.status || 520).json(
         APIResponse(error.message, error.status || 520, error.stack, false)
-    ).status(error.status || 520);
+    );
 }

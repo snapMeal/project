@@ -4,13 +4,10 @@ import Input from "../components/common/Input";
 import { useState, FormEvent } from "react";
 import { toast } from "react-toastify";
 import { InputState } from "../interface/types";
-import { Actions, useStoreActions } from "easy-peasy";
-import { IStore } from "../model";
+import { useReduxAction } from "../hooks/UseRedux";
 
 export default function SignInPage() {
-  const { setLoginData } = useStoreActions(
-    (store: Actions<IStore>) => store.auth,
-  );
+  const { setLoginData } = useReduxAction()
   const [email, setEmail] = useState<InputState>({
     value: "",
     hasError: false,

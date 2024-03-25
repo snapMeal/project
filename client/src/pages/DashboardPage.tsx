@@ -4,11 +4,10 @@ import Navbar from "../components/common/Navbar";
 import FeaturedSection from "../components/dashboard/FeaturedSection";
 import FoodItemCard from "../components/dashboard/FoodItemCard";
 import response from "../example.json";
-import { Actions, State, useStoreActions, useStoreState } from "easy-peasy";
-import { IStore } from "../model";
+import { useReduxAction, useReduxState } from "../hooks/UseRedux";
 function DashboardPage() {
-  const { setMenu } = useStoreActions((actn: Actions<IStore>) => actn.cart);
-  const { menu } = useStoreState((state: State<IStore>) => state.cart);
+  const { menu } = useReduxState();
+  const { setMenu } = useReduxAction();
   useEffect(() => {
     //1> made api req
     //2> got response data
@@ -16,7 +15,6 @@ function DashboardPage() {
     // 3> map it in redux
     setMenu(resp);
   }, []);
-  console.log(menu);
 
   const [search, setSearch] = React.useState("");
 

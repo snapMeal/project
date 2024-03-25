@@ -7,11 +7,11 @@ import { StoreProvider } from "easy-peasy";
 import { store } from "./model/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <StoreProvider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </StoreProvider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 );

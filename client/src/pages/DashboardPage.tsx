@@ -1,38 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Input from "../components/common/Input";
 import Navbar from "../components/common/Navbar";
 import FeaturedSection from "../components/dashboard/FeaturedSection";
 import FoodItemCard from "../components/dashboard/FoodItemCard";
-
+import response from "../example.json";
+import { Actions, State, useStoreActions, useStoreState } from "easy-peasy";
+import { IStore } from "../model";
 function DashboardPage() {
-  const items = [
-    {
-      canteen: "MAIN CANTEEN",
-      title: "Sandwich",
-      description: "Veg Sandwich",
-      price: "₹30",
-      time: "1 minutes",
-      image:
-        "https://www.watermelon.org/wp-content/uploads/2023/02/Sandwich_2023.jpg",
-    },
-    {
-      canteen: "MAIN CANTEEN",
-      title: "Veg Burger",
-      description: "Veg Burger",
-      price: "₹45",
-      time: "8 minutes",
-      image:
-        "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      canteen: "MAIN CANTEEN",
-      title: "Chole Bhature",
-      description: "Chole Bhature",
-      price: "₹40",
-      time: "800 minutes",
-      image: "https://static.toiimg.com/photo/98230357.cms",
-    },
-  ];
+  const { setMenu } = useStoreActions((actn: Actions<IStore>) => actn.cart);
+  const { menu } = useStoreState((state: State<IStore>) => state.cart);
+  useEffect(() => {
+    //1> made api req
+    //2> got response data
+    const resp = response.data;
+    // 3> map it in redux
+    setMenu(resp);
+  }, []);
+  console.log(menu);
 
   const [search, setSearch] = React.useState("");
 
@@ -73,14 +57,16 @@ function DashboardPage() {
               Search Results for {search}
             </h2>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-              {items.map((item, index) => item && <FoodItemCard key={index} />)}
+              {menu.map(
+                (item: any, index: any) => item && <FoodItemCard key={index} />,
+              )}
             </div>
           </section>
         ) : (
           <section className="py-8">
             <h2 className="text-2xl font-bold mb-8">Most Ordered</h2>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-              {items.map((item, index) => (
+              {menu.map((item: any, index: any) => (
                 <FoodItemCard key={index} item={item} />
               ))}
             </div>

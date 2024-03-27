@@ -1,14 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { useState, FormEvent } from "react";
 import { toast } from "react-toastify";
 import { InputState } from "../interface/types";
 import { useReduxAction } from "../hooks/UseRedux";
+import axios from "../axios";
 
-export default function SignInPage() {
+export default function SignInPage()
+{
+
+  const navigator = useNavigate();
+  const { setIsSignedIn } = useReduxAction();
+
   const { setLoginData } = useReduxAction()
-  const [email, setEmail] = useState<InputState>({
+  const [username, setUsername] = useState<InputState>({
     value: "",
     hasError: false,
   });
@@ -23,19 +29,7 @@ export default function SignInPage() {
     let hasError = false;
 
     //Pattern matching
-    if (
-      !email.value
-        .toLowerCase()
-        .match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        )
-    ) {
-      toast.error("Please enter a valid email address", {
-        position: "bottom-right",
-      });
-      setEmail((prev) => ({ ...prev, hasError: true }));
-      hasError = true;
-    }
+    
 
     if (!password.value.match(/[\S\s]+[\S]+/)) {
       toast.error("Please enter a valid password", {
@@ -44,10 +38,41 @@ export default function SignInPage() {
       setPassword((prev) => ({ ...prev, hasError: true }));
       hasError = true;
     }
+    if (!username.value.match(/[\S\s]+[\S]+/)) {
+      toast.error("Please enter a valid username", {
+        position: "bottom-right",
+      });
+      setUsername((prev) => ({ ...prev, hasError: true }));
+      hasError = true;
+    }
 
     if (hasError) return;
 
-    //TODO API CALL HERE
+    try
+    {
+      let response = await axios.post("/user/login", {
+        username: username.value,
+        password: password.value,
+      });
+      console.log(response)
+      if(response.status === 200)
+      {
+        toast.success("SignedIn Successfully", {
+          position: "bottom-right",
+        });
+        
+        setIsSignedIn(true);
+
+        navigator('/')
+      }
+    }
+    catch(e: any)
+    {
+      console.log(e);
+      toast.error(e?.response?.data?.message, {
+        position: "bottom-right",
+      });
+    }
   };
 
   return (
@@ -71,14 +96,14 @@ export default function SignInPage() {
         >
           <Input
             className="w-full"
-            placeHolder="example@website.com"
-            value={email.value}
-            hasError={email.hasError}
+            placeHolder="Enter Your Username"
+            value={username.value}
+            hasError={username.hasError}
             onChange={(e) =>
-              setEmail({ value: e.target.value, hasError: false })
+              setUsername({ value: e.target.value, hasError: false })
             }
           >
-            Email
+            Username
           </Input>
           <Input
             className="w-full"
@@ -100,7 +125,7 @@ export default function SignInPage() {
             color="primary"
             onClick={() => {
               setLoginData({
-                username: email.value,
+                username: username.value,
                 password: password.value,
               });
             }}

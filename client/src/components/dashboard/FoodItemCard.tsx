@@ -1,3 +1,4 @@
+// import { useReduxAction, useReduxState } from "../../hooks/UseRedux";
 import CounterButton from "../common/CounterButton";
 
 type FoodItemCardProps = {
@@ -9,7 +10,9 @@ type FoodItemCardProps = {
   time: string;
 };
 
-function FoodItemCard(props: { item?: FoodItemCardProps }) {
+function FoodItemCard(props: { item?: FoodItemCardProps })
+{
+
   if (props.item === undefined) {
     return (
       <div className="bg-white shadow-lg rounded-lg overflow-hidden w-64 grow">

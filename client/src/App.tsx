@@ -4,6 +4,8 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import DashboardPage from "./pages/DashboardPage";
 import { useReduxState } from "./hooks/UseRedux";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App()
 {
@@ -11,6 +13,7 @@ function App()
   const { isSignedIn } = useReduxState();
   return (
     <>
+    <ToastContainer/>
       {
         isSignedIn ?
         (

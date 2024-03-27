@@ -1,13 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { useState, FormEvent } from "react";
 import { toast } from "react-toastify";
 import { InputState } from "../interface/types";
 import axios from "../axios";
+import { useReduxAction } from "../hooks/UseRedux";
 
 export default function SignUpPage()
 {
+  const navigator = useNavigate();
+
+  const { setIsSignedIn } = useReduxAction();
+
   const [email, setEmail] = useState<InputState>({
     value: "",
     hasError: false,
@@ -86,6 +91,16 @@ export default function SignUpPage()
         username: username.value,
       });
       console.log(response);
+      if (response.status === 200)
+      {
+        toast.success("Account Created Successfully", {
+          position: "bottom-right",
+        });
+        
+        setIsSignedIn(true);
+
+        navigator('/')
+      }
     }
     catch(e: any)
     {

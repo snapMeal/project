@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import TextButton from "./TextButton";
 import Button from "./Button";
+import { useReduxState } from "../../hooks/UseRedux";
 
 function Navbar(props: { margin?: boolean }) {
   // TODO CHANGE THIS TO REDUX STATE
-  const isSignedIn = false;
+  const { isSignedIn } = useReduxState();
   return (
     <>
       <header
@@ -16,7 +17,7 @@ function Navbar(props: { margin?: boolean }) {
             <Icon className="w-6 h-6" />
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
-            {isSignedIn ? (
+            {!isSignedIn ? (
               <>
                 <Link to="/signup">
                   <TextButton>Signup</TextButton>

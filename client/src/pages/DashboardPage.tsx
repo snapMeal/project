@@ -56,7 +56,7 @@ function DashboardPage() {
             </h2>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               {menu.map(
-                (item: any, index: any) => item && <FoodItemCard key={index} />,
+                (item:any, index: any) => item && <FoodItemCard key={index} />,
               )}
             </div>
           </section>

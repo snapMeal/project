@@ -1,4 +1,5 @@
-// import { useReduxAction, useReduxState } from "../../hooks/UseRedux";
+import { useMemo, useState } from "react";
+import { useReduxAction, useReduxState } from "../../hooks/UseRedux";
 import CounterButton from "../common/CounterButton";
 
 type FoodItemCardProps = {
@@ -8,11 +9,20 @@ type FoodItemCardProps = {
   price: string;
   canteen: string;
   time: string;
+  _id:string
 };
 
 function FoodItemCard(props: { item?: FoodItemCardProps })
 {
 
+  const { cart } = useReduxState();
+  const { setItemQty } = useReduxAction();
+
+  const menuItem = useMemo(()=>
+    cart.find((item:any) => item._id === props.item?._id)
+  ,[props.item,cart])
+
+  
   if (props.item === undefined) {
     return (
       <div className="bg-white shadow-lg rounded-lg overflow-hidden w-64 grow">
@@ -60,7 +70,7 @@ function FoodItemCard(props: { item?: FoodItemCardProps })
             </svg>
             <span>{time}</span>
           </h2>
-          <CounterButton/>
+          <CounterButton quantity={menuItem?.quantity || 0} setQuantity={setItemQty}/>
         </div>
       </div>
     </div>

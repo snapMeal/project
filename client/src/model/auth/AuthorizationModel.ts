@@ -7,7 +7,7 @@ export const authModel: IAuthModel = {
     username: "",
     password: "",
   },
-  isSignedIn: false,
+  isSignedIn: true,//todo change
   setIsSignedIn:action(
     (state: StateMapper<FilterActionTypes<IAuthModel>>, payload: boolean) => {
       state.isSignedIn = payload;

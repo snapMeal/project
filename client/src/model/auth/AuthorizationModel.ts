@@ -8,6 +8,11 @@ export const authModel: IAuthModel = {
     password: "",
   },
   isSignedIn: false,
+  setIsSignedIn:action(
+    (state: StateMapper<FilterActionTypes<IAuthModel>>, payload: boolean) => {
+      state.isSignedIn = payload;
+    },
+  ),
   setLoginData: action(
     (state: StateMapper<FilterActionTypes<IAuthModel>>, payload: LoginUser) => {
       state.loginDetails = payload;

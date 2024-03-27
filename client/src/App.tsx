@@ -3,11 +3,12 @@ import LandingPage from "./pages/LandingPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import DashboardPage from "./pages/DashboardPage";
+import { useReduxState } from "./hooks/UseRedux";
 
 function App()
 {
   //TODO CHANGE TO REDUX STATE
-  const isSignedIn = true;
+  const { isSignedIn } = useReduxState();
   return (
     <>
       {
@@ -15,7 +16,6 @@ function App()
         (
           <Routes>
             <Route path="/" element={<DashboardPage />} />
-            <Route path="/about" element={<h1>HOME</h1>} />
             <Route path="/*" element={<h1>404</h1>} />
           </Routes>
         ):

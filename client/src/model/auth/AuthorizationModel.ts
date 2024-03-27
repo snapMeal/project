@@ -7,6 +7,7 @@ export const authModel: IAuthModel = {
     username: "",
     password: "",
   },
+  isSignedIn: false,
   setLoginData: action(
     (state: StateMapper<FilterActionTypes<IAuthModel>>, payload: LoginUser) => {
       state.loginDetails = payload;

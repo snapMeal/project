@@ -17,16 +17,15 @@ export const cartModel: ICartModel = {
       state.menu = menu;
     },
   ),
-  addInCart: action(
+  setItemQty: action(
     (state: StateMapper<FilterActionTypes<ICartModel>>, payload) => {
-      const item = state.cart.findIndex((e: any) => {
-        e._id = payload._id;
+      const itemIndex = state.cart.findIndex((e: any) => {
+        e._id == payload._id;
       });
-      if (item != -1) {
-        state.cart[item].quantity++;
+      if (state.cart[itemIndex].qty <= 0) {
+        state.cart.splice(itemIndex, 1);
       } else {
-        payload.quantity = 1;
-        state.cart.push(payload);
+        state.cart[itemIndex].qty++;
       }
     },
   ),

@@ -42,11 +42,11 @@ function FoodItemCard(props: { item?: FoodItemCardProps,horizontal?:boolean })
   return (
     <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${props.horizontal?"w-full flex":"w-64"} grow`}>
       <img
-        className={`${props.horizontal?"w-1/3":"w-full"} object-cover object-center`}
+        className={`${props.horizontal?"w-1/3":"w-full h-56"} h-56 object-cover object-center`}
         src={image}
         alt="food"
       />
-      <div className="p-4 w-full">
+      <div className="p-4">
         <h2 className="text-sm text-gray-500">{canteen}</h2>
         <h2 className="font-bold text-2xl">{title}</h2>
         <h2 className="text-sm text-gray-500">{description}</h2>

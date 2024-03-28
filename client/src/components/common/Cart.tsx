@@ -23,7 +23,10 @@ function Cart(props:{cartOpen:boolean,setCartOpen:(prev:any)=>any})
                 </div>
             </div>
             <div>
-                <Button className="w-full" color={"primary"}>Proceed To Checkout</Button>
+                <Button onClick={()=>{
+                    props.setCartOpen(false);
+                    //TODO API CALL HERE
+                }} className="w-full" color={"primary"}>Proceed To Checkout</Button>
             </div>
         </div>
     </>

@@ -12,7 +12,7 @@ type FoodItemCardProps = {
   _id:string
 };
 
-function FoodItemCard(props: { item?: FoodItemCardProps })
+function FoodItemCard(props: { item?: FoodItemCardProps,horizontal?:boolean })
 {
 
   const { cart } = useReduxState();
@@ -25,7 +25,7 @@ function FoodItemCard(props: { item?: FoodItemCardProps })
   
   if (props.item === undefined) {
     return (
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-64 grow">
+      <div className={`bg-white shadow-lg rounded-lg overflow-hidden  grow`}>
         <div className="w-full h-56 object-cover object-center animate-pulse bg-gray-300" />
         <div className="p-4">
           <h2 className="bg-gray-100 h-4 rounded-full animate-pulse w-2/3"></h2>
@@ -40,13 +40,13 @@ function FoodItemCard(props: { item?: FoodItemCardProps })
 
   const { image, title, description, price, canteen, time } = props.item;
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden w-64 grow">
+    <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${props.horizontal?"w-full flex":"w-64"} grow`}>
       <img
-        className="w-full h-56 object-cover object-center"
+        className={`${props.horizontal?"w-1/3":"w-full"} object-cover object-center`}
         src={image}
         alt="food"
       />
-      <div className="p-4">
+      <div className="p-4 w-full">
         <h2 className="text-sm text-gray-500">{canteen}</h2>
         <h2 className="font-bold text-2xl">{title}</h2>
         <h2 className="text-sm text-gray-500">{description}</h2>

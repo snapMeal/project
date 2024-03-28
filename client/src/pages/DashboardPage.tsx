@@ -65,7 +65,7 @@ function DashboardPage() {
             <h2 className="text-2xl font-bold mb-8">Most Ordered</h2>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               {menu.map((item: any, index: any) => (
-                <FoodItemCard key={index} item={item} />
+                <FoodItemCard key={index} index={index} item={item} />
               ))}
             </div>
           </section>

@@ -12,15 +12,15 @@ type FoodItemCardProps = {
   _id:string
 };
 
-function FoodItemCard(props: { item?: FoodItemCardProps,horizontal?:boolean })
+function FoodItemCard(props: any)
 {
 
-  const { cart } = useReduxState();
+  const { menu } = useReduxState();
   const { setItemQty } = useReduxAction();
 
   const menuItem = useMemo(()=>
-    cart.find((item:any) => item._id === props.item?._id)
-  ,[props.item,cart])
+    menu.find((item:any) => item._id === props.item?._id)
+  ,[props.item,menu])
 
   
   if (props.item === undefined) {
@@ -70,7 +70,7 @@ function FoodItemCard(props: { item?: FoodItemCardProps,horizontal?:boolean })
             </svg>
             <span>{time}</span>
           </h2>
-          <CounterButton quantity={menuItem?.quantity || 0} setQuantity={setItemQty}/>
+          <CounterButton quantity={menuItem.quantity} index={props.index} id={props.item._id} setQuantity={setItemQty}/>
         </div>
       </div>
     </div>

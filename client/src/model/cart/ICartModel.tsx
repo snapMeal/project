@@ -5,5 +5,5 @@ export interface ICartModel {
   cart: any;
   menu: any;
   setMenu: Action<ICartModel, menuItem[]>;
-  setItemQty: Action<ICartModel, { _id: string; qty: number }>;
+  setItemQty: Action<ICartModel, { index: number; quantity: number }>;
 }

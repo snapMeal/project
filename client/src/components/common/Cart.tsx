@@ -36,39 +36,46 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
         </h2>
         <div className="overflow-y-scroll grow mt-8">
           <div className="flex flex-col gap-4 items-stretch">
-            {cart.map(
+            {menu.map(
               (item: any, index: any) =>
-                item && (
-                  <FoodItemCard horizontal={true} key={index} item={item} />
+                (item && item.quantity != 0) && (
+                  <FoodItemCard horizontal={true} key={index} index={index} item={item} />
                 ),
             )}
           </div>
         </div>
         <div>
-          <Button
-            onClick={async () => {
-              try {
-                let response = await axios.post("/order", {
-                  order:{cart}
-                });
-                console.log(response);
-                if (response.status === 200) {
-                  toast.success(response.data.message, {
-                    position: "bottom-right",
-                  });
-                }
-              } catch (e: any) {
-                console.log(e);
-                toast.error(e?.response?.data?.message, {
-                  position: "bottom-right",
-                });
-              }
-            }}
-            className="w-full"
-            color={"primary"}
-          >
-            Proceed To Checkout
-          </Button>
+          {
+            cart.length > 0 ? (
+              <Button
+                onClick={async () => {
+                  try {
+                    let response = await axios.post("/order", {
+                      order:{cart}
+                    });
+                    console.log(response);
+                    if (response.status === 200) {
+                      toast.success(response.data.message, {
+                        position: "bottom-right",
+                      });
+                      
+                    }
+                  } catch (e: any) {
+                    console.log(e);
+                    toast.error(e?.response?.data?.message, {
+                      position: "bottom-right",
+                    });
+                  }
+                }}
+                className="w-full"
+                color={"primary"}
+              >
+                Proceed To Checkout
+              </Button>
+            ) : (
+              <h2 className="text-2xl text-center">Cart is empty</h2>
+            )
+          }
         </div>
       </div>
     </>

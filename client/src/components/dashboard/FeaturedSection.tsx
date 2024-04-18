@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "../common/Button";
+// import Button from "../common/Button";
 
 function FeaturedSection() {
   const [pageIndex, setPageIndex] = useState(1);
@@ -106,14 +106,14 @@ function FeaturedTile(props: {
           </svg>
           <span>{props.time}</span>
         </h2>
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <Button className="mt-4" color={"primary"}>
             Order Now
           </Button>
           <Button className="mt-4" color={"secondary"}>
             Add To Cart
           </Button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

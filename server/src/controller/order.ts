@@ -12,7 +12,7 @@ async function saveOrder(req: Request, res: Response, next: NextFunction) {
             );
         }
         console.log("order recived ", payload);
-        res.json(APIResponse("order recived", 200, {}, true)).status(200);
+        res.json(APIResponse("Order Recived", 200, {order:payload.cart}, true)).status(200);
     } catch (error) {
         next(error);
     }

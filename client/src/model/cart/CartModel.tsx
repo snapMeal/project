@@ -19,6 +19,7 @@ export const cartModel: ICartModel = {
   ),
   setItemQty: action(
     (state: StateMapper<FilterActionTypes<ICartModel>>, payload) => {
+      // console.log(payload);
       state.menu[payload.index].quantity = payload.quantity;
     },
   ),

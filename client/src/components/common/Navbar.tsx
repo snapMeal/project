@@ -49,7 +49,7 @@ function Navbar(props: { margin?: boolean }) {
                     />
                   </svg>
                 </Link>
-                <Link to="/favorite">
+                <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -65,7 +65,7 @@ function Navbar(props: { margin?: boolean }) {
                     />
                   </svg>
                 </Link>
-                <Link to="/profile">
+                <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -109,7 +109,7 @@ function Navbar(props: { margin?: boolean }) {
               />
             </svg>
           </Link>
-          <Link to="/favorite">
+          <Link to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -125,7 +125,7 @@ function Navbar(props: { margin?: boolean }) {
               />
             </svg>
           </Link>
-          <Link to="/profile">
+          <Link to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

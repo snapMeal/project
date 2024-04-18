@@ -1,16 +1,16 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useReduxAction, useReduxState } from "../../hooks/UseRedux";
 import CounterButton from "../common/CounterButton";
 
-type FoodItemCardProps = {
-  image: string;
-  title: string;
-  description: string;
-  price: string;
-  canteen: string;
-  time: string;
-  _id:string
-};
+// type FoodItemCardProps = {
+//   image: string;
+//   title: string;
+//   description: string;
+//   price: string;
+//   canteen: string;
+//   time: string;
+//   _id:string
+// };
 
 function FoodItemCard(props: any)
 {

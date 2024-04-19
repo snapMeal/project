@@ -60,8 +60,12 @@ export default function SignInPage()
         toast.success("SignedIn Successfully", {
           position: "bottom-right",
         });
-        
+        localStorage.setItem("token", response.data.token);
         setIsSignedIn(true);
+        setLoginData({
+          username: username.value,
+          password: password.value,
+        });
 
         navigator('/')
       }
@@ -123,12 +127,6 @@ export default function SignInPage()
           <Button
             className="mt-8"
             color="primary"
-            onClick={() => {
-              setLoginData({
-                username: username.value,
-                password: password.value,
-              });
-            }}
           >
             Sign in
           </Button>

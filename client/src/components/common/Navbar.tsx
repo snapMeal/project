@@ -6,7 +6,7 @@ import { useReduxState } from "../../hooks/UseRedux";
 import { useState } from "react";
 import Cart from "./Cart";
 
-function Navbar(props: { margin?: boolean }) {
+function Navbar() {
   const { isSignedIn } = useReduxState();
 
   const [cartOpen, setCartOpen] = useState(false);
@@ -14,8 +14,9 @@ function Navbar(props: { margin?: boolean }) {
   return (
     <>
       <Cart cartOpen={cartOpen} setCartOpen={setCartOpen}/>
+      <div className="h-20"/>
       <header
-        className={`${props.margin ? "relative" : "fixed"} w-full hidden md:block z-30`}
+        className={`fixed top-0 left-0 w-full bg-background/50 backdrop-blur hidden md:block z-30`}
       >
         <div className={`p-4 lg:p-6 flex items-center container mx-auto`}>
           <Link className="flex items-center justify-center" to="/">

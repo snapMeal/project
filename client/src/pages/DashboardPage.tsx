@@ -20,7 +20,7 @@ function DashboardPage() {
 
   return (
     <>
-      <Navbar margin />
+      <Navbar  />
       <main className="container mx-auto px-4">
         <FeaturedSection />
         <section className="mt-16">

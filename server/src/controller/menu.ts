@@ -4,8 +4,8 @@ import { Mongoose } from "mongoose";
 import { Menu } from "../models/menu";
 import { APIError } from "../utils/errorHandler";
 async function menuDetails(req,res,next) {
-    const payload=req.body;
-    const canteen=payload.canteen;
+    const canteen=req.query.canteen;
+    console.log(canteen);
     if(canteen){
         try{
             const Items=await Menu.find({canteen});
@@ -43,4 +43,15 @@ async function addMenu(req,res,next) {
         );
     }
 }
-export const menuController={addMenu,menuDetails};
+async function updateMenu(req,res,next) {
+   const payload=req.body;
+   const id=req.query.id;
+   try{
+    const data=await Menu.findByIdAndUpdate({_id:id},payload,{new:true});
+    res.json(APIResponse(`update the item`, 200,data, true)).status(200);
+   }
+   catch(error){
+    next(error);
+   }
+}
+export const menuController={addMenu,menuDetails,updateMenu};

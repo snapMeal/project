@@ -4,4 +4,5 @@ import { menuController } from "../controller/menu";
 const menuRouter=Router();
 menuRouter.get("/menu",asyncHandler(menuController.menuDetails));
 menuRouter.post("/menu",asyncHandler(menuController.addMenu));
+menuRouter.put("/menu",menuController.updateMenu);
 export   {menuRouter};

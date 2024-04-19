@@ -5,7 +5,7 @@ import Navbar from "../components/common/Navbar";
 function LandingPage() {
   return (
     <>
-      <Navbar margin />
+      <Navbar />
       <main className="container mx-auto px-4 mt-48">
         <section className="flex justify-center items-center flex-col gap-8">
           <div className="flex flex-col gap-4 md:gap-8">

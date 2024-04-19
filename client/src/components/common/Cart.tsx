@@ -3,18 +3,20 @@ import FoodItemCard from "../dashboard/FoodItemCard";
 import Button from "./Button";
 import axios from "../../axios";
 import { toast } from "react-toastify";
+import { useModal } from "../../context/ModalContext";
 
 function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
   const { menu } = useReduxState();
   const cart = menu.filter((item: any) => item.quantity > 0);
+  const modal = useModal();
   return (
     <>
       <div
         onClick={() => props.setCartOpen(false)}
-        className={`${props.cartOpen ? "bg-text/50" : "pointer-events-none"} duration-300 fixed z-40 w-screen h-screen left-0 top-0`}
+        className={`${props.cartOpen ? "bg-text/50" : "pointer-events-none"} duration-300 fixed z-30 w-screen h-screen left-0 top-0`}
       />
       <div
-        className={`${props.cartOpen ? "" : "translate-x-full"} right-0 duration-300 p-8 fixed z-50 w-full md:w-128 h-screen top-0 bg-background shadow-xl flex flex-col justify-between`}
+        className={`${props.cartOpen ? "" : "translate-x-full"} right-0 duration-300 p-8 fixed z-40 w-full md:w-128 h-screen top-0 bg-background shadow-xl flex flex-col justify-between`}
       >
         <h2 className="text-4xl flex justify-between items-center">
           <span>Cart</span>
@@ -49,6 +51,9 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
             cart.length > 0 ? (
               <Button
                 onClick={async () => {
+                  if (!(await modal?.CreateModal("Confirmation", "Are you sure you want to place this order?", "Yes", "No"))) {
+                    return;
+                  }
                   try {
                     let response = await axios.post("/order", {
                       order:{cart}
@@ -58,7 +63,6 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
                       toast.success(response.data.message, {
                         position: "bottom-right",
                       });
-                      
                     }
                   } catch (e: any) {
                     console.log(e);

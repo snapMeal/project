@@ -16,7 +16,7 @@ function Navbar() {
       <Cart cartOpen={cartOpen} setCartOpen={setCartOpen}/>
       <div className="h-20"/>
       <header
-        className={`fixed top-0 left-0 w-full bg-background/50 backdrop-blur hidden md:block z-30`}
+        className={`fixed top-0 left-0 w-full bg-background/50 backdrop-blur hidden md:block z-20`}
       >
         <div className={`p-4 lg:p-6 flex items-center container mx-auto`}>
           <Link className="flex items-center justify-center" to="/">
@@ -93,7 +93,7 @@ function Navbar() {
         </div>
       </header>
       {isSignedIn && (
-        <header className="bg-background border-t shadow-inner md:hidden fixed bottom-0 left-0 w-full flex items-center justify-center gap-16 px-8 py-4">
+        <header className="bg-background border-t shadow-inner md:hidden fixed z-20 bottom-0 left-0 w-full flex items-center justify-center gap-16 px-8 py-4">
           <Link to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"

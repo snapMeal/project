@@ -17,13 +17,10 @@ body {
   @apply bg-background text-text;
 }
 .card {
-  @apply bg-background border border-text/5 hover:border-text/10 rounded-xl;
+  @apply bg-background border border-text/15 rounded-xl;
 }
 .gradient-text {
   @apply from-primary to-accent bg-gradient-to-t bg-clip-text text-transparent;
-}
-.clock {
-  /* font-family: 'Segment7Standard'; */
 }
 ::-webkit-scrollbar {
   width: 5px;

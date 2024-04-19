@@ -47,7 +47,7 @@ function App()
         )
       }
       <Route path="/*" element={<h1>404</h1>} />
-      <Route path="/admin" element={<AdminDashboardPage />} />
+      <Route path="/admin/*" element={<AdminDashboardPage />} />
     </Routes>
     </>
   );

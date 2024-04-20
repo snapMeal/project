@@ -16,9 +16,14 @@ body {
   font-family: "Poppins", sans-serif;
   @apply bg-background text-text;
 }
-.card {
-  @apply bg-background border border-text/15 rounded-xl;
+
+@layer components
+{
+  .card {
+    @apply bg-background border border-text/15 rounded-xl;
+  }
 }
+
 .gradient-text {
   @apply from-primary to-accent bg-gradient-to-t bg-clip-text text-transparent;
 }

@@ -3,7 +3,6 @@ import { ICartModel } from "./ICartModel";
 import { menuItem } from "../../interface/MenuItem";
 
 export const cartModel: ICartModel = {
-  cart: [],
   menu: [],
   setMenu: action(
     (

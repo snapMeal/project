@@ -3,18 +3,9 @@ import Input from "../components/common/Input";
 import Navbar from "../components/common/Navbar";
 import FeaturedSection from "../components/dashboard/FeaturedSection";
 import FoodItemCard from "../components/dashboard/FoodItemCard";
-import response from "../example.json";
-import { useReduxAction, useReduxState } from "../hooks/UseRedux";
+import { useReduxState } from "../hooks/UseRedux";
 function DashboardPage() {
   const { menu } = useReduxState();
-  const { setMenu } = useReduxAction();
-  useEffect(() => {
-    //1> made api req
-    //2> got response data
-    const resp = response.data;
-    // 3> map it in redux
-    setMenu(resp);
-  }, []);
 
   const [search, setSearch] = React.useState("");
 

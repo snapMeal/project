@@ -28,43 +28,54 @@ export default function AdminNavbar() {
                 />
               </svg>
             </Link>
-            <Link to="">
+            <Link to="/admin/menu">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="33"
                 fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
+                viewBox="0 0 32 33"
                 className="w-8 h-8 hover:text-primary hover:scale-105 active:scale-95 duration-200"
               >
                 <path
+                  stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                />
+                  strokeWidth="2"
+                  d="M1 31.8h29.3M2.7 28.2a13.3 13.3 0 0113-11 13.1 13.1 0 0112.9 11M15.7 17.1a2.6 2.6 0 100-5.2 2.6 2.6 0 000 5.2zM15.7 4v3.7M8 6.5v3.6M23.4 6.5v3.6"
+                ></path>
               </svg>
             </Link>
-            <Link to="">
+            <Link to="/admin/history">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
                 fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
                 className="w-8 h-8 hover:text-primary hover:scale-105 active:scale-95 duration-200"
+                viewBox="0 0 32 32"
               >
                 <path
+                  stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                />
+                  strokeWidth="2"
+                  d="M30.2 4H2v24.34h28.2V4z"
+                ></path>
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M8.4 24.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM18.5 24.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM25 19.2h1.9M25 23.2h1.9M8.4 14.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM18.5 14.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM25 9.2h1.9M25 13.2h1.9"
+                ></path>
               </svg>
             </Link>
           </nav>
         </div>
       </header>
       <header className="bg-background border-t shadow-inner md:hidden fixed bottom-0 left-0 w-full flex items-center justify-center gap-16 px-8 py-4">
-        <Link to="/">
+        <Link to="">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -80,36 +91,47 @@ export default function AdminNavbar() {
             />
           </svg>
         </Link>
-        <Link to="">
+        <Link to="/admin/menu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="33"
             fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+            viewBox="0 0 32 33"
+            className="w-8 h-8 hover:text-primary hover:scale-105 active:scale-95 duration-200"
           >
             <path
+              stroke="currentColor"
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-            />
+              strokeWidth="2"
+              d="M1 31.8h29.3M2.7 28.2a13.3 13.3 0 0113-11 13.1 13.1 0 0112.9 11M15.7 17.1a2.6 2.6 0 100-5.2 2.6 2.6 0 000 5.2zM15.7 4v3.7M8 6.5v3.6M23.4 6.5v3.6"
+            ></path>
           </svg>
         </Link>
-        <Link to="">
+        <Link to="/admin/history">
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
             fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+            className="w-8 h-8 hover:text-primary hover:scale-105 active:scale-95 duration-200"
+            viewBox="0 0 32 32"
           >
             <path
+              stroke="currentColor"
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-            />
+              strokeWidth="2"
+              d="M30.2 4H2v24.34h28.2V4z"
+            ></path>
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M8.4 24.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM18.5 24.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM25 19.2h1.9M25 23.2h1.9M8.4 14.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM18.5 14.6a3.4 3.4 0 100-6.8 3.4 3.4 0 000 6.8zM25 9.2h1.9M25 13.2h1.9"
+            ></path>
           </svg>
         </Link>
       </header>

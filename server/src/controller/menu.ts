@@ -45,7 +45,7 @@ async function addMenu(req,res,next) {
 }
 async function updateMenu(req,res,next) {
    const payload=req.body;
-   const id=req.query.id;
+   const id=req.body._id;
    try{
     const data=await Menu.findByIdAndUpdate({_id:id},payload,{new:true});
     res.json(APIResponse(`update the item`, 200,data, true)).status(200);

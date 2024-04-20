@@ -60,7 +60,7 @@ export default function SignInPage()
         toast.success("SignedIn Successfully", {
           position: "bottom-right",
         });
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("token", response.data.data.token);
         setIsSignedIn(true);
         setLoginData({
           username: username.value,

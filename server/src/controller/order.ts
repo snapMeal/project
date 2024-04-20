@@ -9,11 +9,12 @@ async function saveOrder(req: any, res: Response, next: NextFunction) {
         if (payload.length === 0) {
             throw new APIError("empty order?", 400);
         }
-        let menu;
+        let menu:any = [];
         let amount = 0;
-        payload.forEach((element) => {
+        console.log(payload)
+        payload.cart.forEach((element) => {
             menu.push({ menuId: element._id, quantity: element.quantity });
-            amount += element.price;
+            amount += Number(element.price.replace("₹", "") * element.quantity);
         });
         const newOrder = new Order({
             order: menu,

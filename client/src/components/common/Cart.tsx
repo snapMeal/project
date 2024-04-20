@@ -1,4 +1,4 @@
-import { useReduxState } from "../../hooks/UseRedux";
+import { useReduxAction, useReduxState } from "../../hooks/UseRedux";
 import FoodItemCard from "../dashboard/FoodItemCard";
 import Button from "./Button";
 import axios from "../../axios";
@@ -7,6 +7,7 @@ import { useModal } from "../../context/ModalContext";
 
 function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
   const { menu } = useReduxState();
+  const { setMenu } = useReduxAction();
   const cart = menu.filter((item: any) => item.quantity > 0);
   const modal = useModal();
   return (
@@ -56,10 +57,17 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
                   }
                   try {
                     let response = await axios.post("/order", {
-                      order:{cart}
+                      order: { cart }
+                    }, {
+                      headers: {
+                        Authorization: `${localStorage.getItem("token")}`
+                      }
                     });
                     console.log(response);
-                    if (response.status === 200) {
+                    if (response.status === 200){
+                      setMenu(menu);//clear cart
+                      //TODO UPI BLA BLA
+                      window.open(response.data.data.paymentLink, "_blank");
                       toast.success(response.data.message, {
                         position: "bottom-right",
                       });

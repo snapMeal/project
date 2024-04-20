@@ -96,9 +96,9 @@ export default function SignUpPage()
         toast.success("Account Created Successfully", {
           position: "bottom-right",
         });
-        
-        setIsSignedIn(true);
 
+        localStorage.setItem("token", response.data.data.token);
+        setIsSignedIn(true);
         navigator('/')
       }
     }

@@ -20,7 +20,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    opt: {
+    otp: {
         type: Number,
         required: true,
     },

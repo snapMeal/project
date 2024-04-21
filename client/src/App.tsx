@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import Admin from "./pages/admin/Admin";
 import axios from "./axios";
 import OrdersPage from "./pages/OrdersPage";
+import DefaultRoute from "./pages/DefaultRoute";
 
 function App() {
     //TODO CHANGE TO REDUX STATE
@@ -65,7 +66,7 @@ function App() {
                             </>
                         )
                 }
-                <Route path="/*" element={<h1>404</h1>} />
+                <Route path="/*" element={<DefaultRoute/>} />
                 <Route path="/admin/*" element={<Admin />} />
             </Routes>
         </>

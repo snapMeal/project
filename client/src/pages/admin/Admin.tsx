@@ -4,6 +4,7 @@ import AdminNavbar from "../../components/admin/AdminNavbar";
 import { Route, Routes } from "react-router-dom";
 import DashboardPage from "./DashboardPage";
 import MenuPage from "./MenuPage";
+import OrderHistoryPage from "./OrderHistoryPage";
 
 function Admin() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -19,6 +20,7 @@ function Admin() {
           isSignedIn && <Routes>
             <Route path="/" element={<DashboardPage/>} />
             <Route path="/menu" element={<MenuPage/>} />
+            <Route path="/orders" element={<OrderHistoryPage/>} />
           </Routes>
         }
       </div>

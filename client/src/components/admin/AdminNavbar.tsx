@@ -46,7 +46,7 @@ export default function AdminNavbar() {
                 ></path>
               </svg>
             </Link>
-            <Link to="/admin/history">
+            <Link to="/admin/orders">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -74,7 +74,7 @@ export default function AdminNavbar() {
           </nav>
         </div>
       </header>
-      <header className="bg-background border-t shadow-inner md:hidden fixed bottom-0 left-0 w-full flex items-center justify-center gap-16 px-8 py-4">
+      <header className="bg-background border-t shadow-inner md:hidden fixed bottom-0 left-0 w-full flex items-center justify-evenly sm:justify-center sm:gap-16 px-8 py-4">
         <Link to="">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@ export default function AdminNavbar() {
             ></path>
           </svg>
         </Link>
-        <Link to="/admin/history">
+        <Link to="/admin/orders">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"

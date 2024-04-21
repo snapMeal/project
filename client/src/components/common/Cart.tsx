@@ -111,7 +111,7 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
                       },
                     },
                   );
-                  console.log(response);
+                  // console.log(response);
                   if (response.status === 200) {
                     setMenu(menu); //clear cart
                     //TODO UPI BLA BLA

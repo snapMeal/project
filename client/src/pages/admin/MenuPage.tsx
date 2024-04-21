@@ -79,7 +79,7 @@ function MenuModal({ modalOpen, setModalOpen, addMode, formData, setFormData }: 
                     ...formData,
                     price: `₹${formData.price}`
                 })
-                console.log(response);
+                // console.log(response);
                 if (response.status === 200) {
                     toast.success("Item added successfully");
                     setModalOpen(false);
@@ -100,7 +100,7 @@ function MenuModal({ modalOpen, setModalOpen, addMode, formData, setFormData }: 
                     ...formData,
                     price: `₹${formData.price}`
                 })
-                console.log(response);
+                // console.log(response);
                 if (response.status === 200) {
                     toast.success("Item updated successfully");
                     setModalOpen(false);
@@ -181,7 +181,7 @@ function MenuItem(props: any) {
                                         _id: _id
                                     }
                                 })
-                                console.log(response);
+                                // console.log(response);
                                 if (response.status === 200) {
                                     toast.success("Item deleted successfully");
                                     const resp = await axios.get("/menu");

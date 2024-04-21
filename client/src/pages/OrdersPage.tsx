@@ -1,11 +1,14 @@
 import Navbar from '../components/common/Navbar'
+import OrderList from '../components/common/OrderList'
 
-function OrdersPage() {
+function OrdersPage()
+{
   return (
     <>
-        <Navbar  />
-        <main className="container mx-auto px-4">
-        </main>
+      <Navbar  />
+      <main className="container mx-auto px-4">
+        <OrderList />
+      </main>
     </>
   )
 }

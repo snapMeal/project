@@ -5,16 +5,18 @@ import Button from "./Button";
 import { useReduxState } from "../../hooks/UseRedux";
 import { useState } from "react";
 import Cart from "./Cart";
+import { useModal } from "../../context/ModalContext";
 
 function Navbar() {
   const { isSignedIn } = useReduxState();
 
   const [cartOpen, setCartOpen] = useState(false);
+  const modal = useModal();
 
   return (
     <>
-      <Cart cartOpen={cartOpen} setCartOpen={setCartOpen}/>
-      <div className="h-20"/>
+      <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
+      <div className="h-20" />
       <header
         className={`fixed top-0 left-0 w-full bg-background/50 backdrop-blur hidden md:block z-20`}
       >
@@ -66,23 +68,18 @@ function Navbar() {
                     />
                   </svg>
                 </Link>
-                <Link to="/">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-8 h-8 hover:text-primary hover:scale-105 active:scale-95 duration-200"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                    />
+                <div onClick={async () => {
+                  if (await modal?.CreateModal("Are you sure you want to sign out?", "You will have to sign in again", "Sign Out", "Cancel")) {
+                    localStorage.removeItem("token");
+                    window.location.reload();
+                    // navigator("/");
+                  }
+                }} className="cursor-pointer">
+                  <svg className="w-8 h-8 hover:text-primary hover:scale-105 active:scale-95 duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
                   </svg>
-                </Link>
-                <div onClick={()=>setCartOpen(true)}>
+                </div>
+                <div onClick={() => setCartOpen(true)}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 hover:text-primary hover:scale-105 active:scale-95 duration-200">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                   </svg>
@@ -93,7 +90,7 @@ function Navbar() {
         </div>
       </header>
       {isSignedIn && (
-        <header className="bg-background border-t shadow-inner md:hidden fixed z-20 bottom-0 left-0 w-full flex items-center justify-center gap-16 px-8 py-4">
+        <header className="bg-background border-t shadow-inner md:hidden fixed z-20 bottom-0 left-0 w-full flex items-center justify-evenly sm:justify-center sm:gap-16 px-8 py-4">
           <Link to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -126,23 +123,18 @@ function Navbar() {
               />
             </svg>
           </Link>
-          <Link to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-              />
+          <div onClick={async () => {
+            if (await modal?.CreateModal("Do you want to sign out?", "You will have to sign in again", "Sign Out", "Cancel")) {
+              localStorage.removeItem("token");
+              window.location.reload();
+              // navigator("/");
+            }
+          }} className="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
             </svg>
-          </Link>
-          <div onClick={()=>setCartOpen(true)}>
+          </div>
+          <div onClick={() => setCartOpen(true)}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
             </svg>

@@ -5,7 +5,6 @@ import { Menu } from "../models/menu";
 import { APIError } from "../utils/errorHandler";
 async function menuDetails(req, res, next) {
     const canteen = req.query.canteen;
-    console.log(canteen);
     if (canteen) {
         try {
             const Items = await Menu.find({ canteen });

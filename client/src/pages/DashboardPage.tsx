@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Input from "../components/common/Input";
 import Navbar from "../components/common/Navbar";
 import FeaturedSection from "../components/dashboard/FeaturedSection";

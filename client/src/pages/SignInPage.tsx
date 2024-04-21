@@ -54,7 +54,7 @@ export default function SignInPage()
         username: username.value,
         password: password.value,
       });
-      console.log(response)
+      // console.log(response)
       if(response.status === 200)
       {
         toast.success("SignedIn Successfully", {

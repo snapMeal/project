@@ -17,7 +17,7 @@ async function saveOrder(req: any, res: Response, next: NextFunction) {
         });
         const newOrder = new Order({
             order: menu,
-            status: "received",
+            status: "unverified",
             userId: req.user,
             otp: Math.floor(1000 + Math.random() * 9000),
         });

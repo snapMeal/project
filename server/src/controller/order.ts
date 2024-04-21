@@ -29,9 +29,7 @@ async function saveOrder(req: any, res: Response, next: NextFunction) {
                 "Order Recived",
                 200,
                 {
-                    paymentLink:
-                        "upi://pay?pa=9873015810@ibl&pn=SnapMeal&cu=INR&am=" +
-                        amount,
+                    paymentLink: `upi://pay?pa=9873015810@ibl&tn='OTP:${newOrder.otp}'&pn=SnapMeal&cu=INR&am=${amount}`,
                 },
                 true
             )
@@ -44,7 +42,7 @@ async function saveOrder(req: any, res: Response, next: NextFunction) {
 async function getOrders(req: any, res: Response, next: NextFunction) {
     try {
         if (req.user) {
-            const resp: any = await Order.find({userId:req.user})
+            const resp: any = await Order.find({ userId: req.user })
                 .populate({
                     path: "order.menuId", // Populate the menuId field of the order document
                     model: "MenuItem", // Use the Menu model

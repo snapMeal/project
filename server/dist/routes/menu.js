@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.menuRouter = void 0;
+const express_1 = require("express");
+const asyncHandler_1 = require("../utils/asyncHandler");
+const menu_1 = require("../controller/menu");
+const menuRouter = (0, express_1.Router)();
+exports.menuRouter = menuRouter;
+menuRouter.get("/menu", (0, asyncHandler_1.asyncHandler)(menu_1.menuController.menuDetails));
+menuRouter.post("/menu", (0, asyncHandler_1.asyncHandler)(menu_1.menuController.addMenu));
+menuRouter.put("/menu", menu_1.menuController.updateMenu);
+menuRouter.delete("/menu", menu_1.menuController.deleteMenu);

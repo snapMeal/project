@@ -3,13 +3,14 @@ import { ReactNode } from "react";
 function Button(props: {
   children?: ReactNode;
   className?: string;
-  color: "primary" | "secondary" | "accent";
+  color: "primary" | "secondary" | "accent" | "red";
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }) {
   let color: { [key: string]: string } = {
     primary: "bg-primary",
     secondary: "bg-secondary",
     accent: "bg-accent",
+    red: "bg-red",
   };
   return (
     <button

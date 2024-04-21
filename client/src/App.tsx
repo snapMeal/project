@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react";
 import Admin from "./pages/admin/Admin";
 import axios from "./axios";
+import OrdersPage from "./pages/OrdersPage";
 
 function App() {
     //TODO CHANGE TO REDUX STATE
@@ -53,6 +54,7 @@ function App() {
                         (
                             <>
                                 <Route path="/" element={<DashboardPage />} />
+                                <Route path='/orders' element={<OrdersPage/>} />
                             </>
                         ) :
                         (

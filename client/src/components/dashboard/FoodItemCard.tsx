@@ -47,12 +47,8 @@ function FoodItemCard(props: any)
         alt="food"
       />
       <div className="p-4 grow">
-        <h2 className="text-sm text-gray-500">{canteen}</h2>
-        <h2 className="font-bold text-2xl">{title}</h2>
-        <h2 className="text-sm text-gray-500">{description}</h2>
-        <div className="text-sm flex justify-between items-center mt-2">
-          <h2 className="flex items-center gap-2 md:gap-4 opacity-70">
-            <span className="">{price}</span>
+        <h2 className="flex items-center gap-2 md:gap-4 opacity-70 text-xs">
+            <span className="">{canteen}</span>
             <span>|</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -70,6 +66,10 @@ function FoodItemCard(props: any)
             </svg>
             <span>{time}</span>
           </h2>
+        <h2 className="font-bold text-2xl">{title}</h2>
+        <h2 className="text-sm text-gray-500">{description}</h2>
+        <div className="text-sm flex justify-between items-center mt-2">
+          <h2 className="text-xl text-gray-500">{price}</h2>
           <CounterButton quantity={menuItem.quantity} index={props.index} id={props.item._id} setQuantity={setItemQty}/>
         </div>
       </div>

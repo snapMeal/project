@@ -50,7 +50,7 @@ function Navbar() {
                     />
                   </svg>
                 </Link>
-                <Link to="/">
+                <Link to="/orders">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -110,7 +110,7 @@ function Navbar() {
               />
             </svg>
           </Link>
-          <Link to="/">
+          <Link to="/orders">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

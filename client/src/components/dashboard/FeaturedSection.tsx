@@ -1,10 +1,21 @@
 import { useEffect, useRef, useState } from "react";
+import { useReduxState } from "../../hooks/UseRedux";
 // import Button from "../common/Button";
 
 function FeaturedSection() {
   const [pageIndex, setPageIndex] = useState(1);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const featuredSection: {
+    canteen: string;
+    title: string;
+    description: string;
+    price: string;
+    time: string;
+    image: string;
+  }[] = useReduxState().menu;
+
   useEffect(() => {
     timeoutRef.current = setInterval(() => {
       setPageIndex((prev) => (prev + 1) % featuredSection.length);
@@ -12,36 +23,7 @@ function FeaturedSection() {
     return () => {
       if (timeoutRef.current) clearInterval(timeoutRef.current);
     };
-  }, []);
-
-  const featuredSection = [
-    {
-      canteen: "MAIN CANTEEN",
-      title: "Sandwich",
-      description: "Veg Sandwich",
-      price: "₹30",
-      time: "1 minutes",
-      image:
-        "https://www.watermelon.org/wp-content/uploads/2023/02/Sandwich_2023.jpg",
-    },
-    {
-      canteen: "MAIN CANTEEN",
-      title: "Veg Burger",
-      description: "Veg Burger",
-      price: "₹45",
-      time: "8 minutes",
-      image:
-        "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      canteen: "MAIN CANTEEN",
-      title: "Chole Bhature",
-      description: "Chole Bhature",
-      price: "₹40",
-      time: "800 minutes",
-      image: "https://static.toiimg.com/photo/98230357.cms",
-    },
-  ];
+  }, [featuredSection]);
 
   return (
     <section className="overflow-clip rounded-xl">

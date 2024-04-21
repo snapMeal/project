@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import TextButton from "./TextButton";
 import Button from "./Button";
@@ -12,7 +12,6 @@ function Navbar() {
 
   const [cartOpen, setCartOpen] = useState(false);
   const modal = useModal();
-  const navigator = useNavigate();
 
   return (
     <>

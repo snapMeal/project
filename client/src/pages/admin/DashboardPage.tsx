@@ -7,7 +7,7 @@ function DashboardPage() {
     const modal = useModal();
     interface order {
         username: string;
-        status: "unverified" | "verified" | "in-progress" | "done";
+        status: "unverified" | "verified" | "in-progress" | "done" | "cancelled";
         menu: {
             title: string;
             price: string;
@@ -96,6 +96,7 @@ function DashboardPage() {
                                     verified: "bg-yellow-500",
                                     "in-progress": "bg-blue-500",
                                     done: "bg-green-500",
+                                    cancelled: "bg-red"
                                 }[order.status]} text-xs capitalize`}>
                                     {order.status}
                                 </h1>
@@ -134,7 +135,8 @@ function DashboardPage() {
                                         unverified: "Verify Payment",
                                         verified: "Start Preparing",
                                         "in-progress": "Mark as Done",
-                                        done: "Done"
+                                        done: "Done",
+                                        cancelled: "Cancelled"
                                     }[order.status]
                                 }
                             </Button>

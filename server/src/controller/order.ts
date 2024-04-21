@@ -2,8 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { APIResponse } from "../utils/responseHandeler";
 import { APIError } from "../utils/errorHandler";
 import Order from "../models/order";
-import { Menu } from "../models/menu";
-
 async function saveOrder(req: any, res: Response, next: NextFunction) {
     const payload = req.body.order;
     try {
@@ -74,5 +72,15 @@ async function getOrders(req: any, res: Response, next: NextFunction) {
         next(error);
     }
 }
-
-export const orderController = { saveOrder, getOrders };
+async function updateOrder(req,res,next) {
+    const payload=req.body;
+    const id=payload._id;
+    try{
+        const data=await Order.findByIdAndUpdate({_id:id},payload,{new:true});
+        res.json(APIResponse(`updated the order`, 200, data, true)).status(200);
+    }
+    catch(error){
+        next(error);
+    }
+}
+export const orderController = { saveOrder, getOrders,updateOrder };

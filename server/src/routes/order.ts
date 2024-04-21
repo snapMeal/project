@@ -7,5 +7,5 @@ const orderRouter = Router();
 
 orderRouter.post("/order",verifyJwt, asyncHandler(orderController.saveOrder));
 orderRouter.get("/order",verifyJwtOrAdmin, asyncHandler(orderController.getOrders));
-
+orderRouter.put("/order",asyncHandler(orderController.updateOrder));
 export { orderRouter };

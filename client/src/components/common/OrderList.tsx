@@ -82,7 +82,7 @@ function OrderList(props:{admin?:boolean,hideDoneAndCancelled?:boolean})
                         }
 
                         let total = 0;
-
+                        console.log(order);
                         order.order.forEach((item) => {
                             total += parseInt(item.menuId.price.split("₹")[1], 10) * item.quantity;
                         });

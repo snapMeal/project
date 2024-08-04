@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useReduxState } from "../../hooks/UseRedux";
 // import Button from "../common/Button";
 
-function FeaturedSection() {
+function FeaturedSection(props: {className?: string}) {
   const [pageIndex, setPageIndex] = useState(1);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -26,7 +26,7 @@ function FeaturedSection() {
   }, [featuredSection]);
 
   return (
-    <section className="overflow-clip rounded-xl">
+    <section className={`overflow-clip rounded-xl ${props.className}`}>
       <section
         style={{
           width: `${100 * featuredSection.length}%`,

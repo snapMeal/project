@@ -13,7 +13,7 @@ function DashboardPage() {
     <>
       <Navbar  />
       <main className="container mx-auto px-4">
-        <FeaturedSection />
+        <FeaturedSection className="mt-8"/>
         <section className="mt-16">
           <h1 className="font-bold text-3xl md:text-6xl mb-8">
             What Are You Craving?
@@ -46,9 +46,13 @@ function DashboardPage() {
               Search Results for {search}
             </h2>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-              {menu.map(
-                (item:any, index: any) => item && <FoodItemCard key={index} />,
-              )}
+              {menu
+                .filter((item: any) =>
+                  item.title.toLowerCase().includes(search.toLowerCase())
+                )
+                .map((item: any, index: any) => (
+                  <FoodItemCard key={index} index={index} item={item} />
+                ))}
             </div>
           </section>
         ) : (

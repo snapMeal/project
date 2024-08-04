@@ -10,6 +10,12 @@ function OrderList(props:{admin?:boolean,hideDoneAndCancelled?:boolean})
     interface order {
         status: "unverified" | "verified" | "in-progress" | "done" | "cancelled";
         otp:number;
+        userId:{
+            username:string;
+            email:string;
+            password:string;
+            _id:string;
+        }
         _id:string;
         order: {
             menuId:{
@@ -76,7 +82,7 @@ function OrderList(props:{admin?:boolean,hideDoneAndCancelled?:boolean})
                         }
 
                         let total = 0;
-
+                        console.log(order);
                         order.order.forEach((item) => {
                             total += parseInt(item.menuId.price.split("₹")[1], 10) * item.quantity;
                         });
@@ -84,7 +90,13 @@ function OrderList(props:{admin?:boolean,hideDoneAndCancelled?:boolean})
                         return(
                         <div key={index} className="p-4 card">
                             <div className="flex justify-between">
-                                <h1 className="text-2xl font-bold">{order.otp}{"  |  "}₹{total}</h1>
+                                {
+                                    props.admin?(
+                                        <h1 className="text-2xl font-bold">{order.userId.username}{"  |  "}{order.otp}</h1>
+                                    ):(
+                                        <h1 className="text-2xl font-bold">{order.otp}{"  |  "}₹{total}</h1>
+                                    )
+                                }
                                 <h1 className={`px-4 py-2 text-white rounded-full ${{
                                     unverified: "bg-slate-800",
                                     verified: "bg-yellow-500",

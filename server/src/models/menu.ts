@@ -23,6 +23,10 @@ const menuSchema= new Schema({
     image: {
         type: String,
         required: true
+    },
+    isDeleted: {
+        type:Boolean,
+        default:false
     }
 });
 export const Menu = model('MenuItem', menuSchema);

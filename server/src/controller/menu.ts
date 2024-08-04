@@ -3,11 +3,12 @@ import { APIResponse } from "../utils/responseHandeler";
 import { Mongoose } from "mongoose";
 import { Menu } from "../models/menu";
 import { APIError } from "../utils/errorHandler";
-async function menuDetails(req, res, next) {
+
+async function getMenuItems(req, res, next) {
     const canteen = req.query.canteen;
     if (canteen) {
         try {
-            const Items = await Menu.find({ canteen });
+            const Items = await Menu.find({ canteen, isDeleted: false });
             res.json(
                 APIResponse(`menu of the ${canteen}`, 200, Items, true)
             ).status(200);
@@ -16,7 +17,7 @@ async function menuDetails(req, res, next) {
         }
     } else {
         try {
-            const Items = await Menu.find();
+            const Items = await Menu.find({isDeleted: false});
             res.json(
                 APIResponse(`menu of  all the canteen`, 200, Items, true)
             ).status(200);
@@ -55,10 +56,10 @@ async function updateMenu(req, res, next) {
 async function deleteMenu(req, res, next) {
     const id = req.body._id;
     try {
-        const data = await Menu.findByIdAndDelete(id);
+        const data = await Menu.findByIdAndUpdate(id,{isDeleted:true});
         res.json(APIResponse(`deleted the item`, 200, data, true)).status(200);
     } catch (error) {
         next(error);
     }
 }
-export const menuController = { addMenu, menuDetails, updateMenu, deleteMenu };
+export const menuController = { addMenu, menuDetails: getMenuItems, updateMenu, deleteMenu };

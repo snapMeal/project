@@ -25,7 +25,7 @@ function FoodItemCard(props: any)
   
   if (props.item === undefined) {
     return (
-      <div className={`bg-white shadow-lg rounded-lg overflow-hidden  grow`}>
+      <div className={`bg-white shadow-lg rounded-lg overflow-hidden grow`}>
         <div className="w-full h-56 object-cover object-center animate-pulse bg-gray-300" />
         <div className="p-4">
           <h2 className="bg-gray-100 h-4 rounded-full animate-pulse w-2/3"></h2>
@@ -40,7 +40,7 @@ function FoodItemCard(props: any)
 
   const { image, title, description, price, canteen, time } = props.item;
   return (
-    <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${props.horizontal?"w-full flex":"w-64"} grow`}>
+    <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${props.horizontal?"w-full flex":"w-64"} max-w-lg grow`}>
       <img
         className={`${props.horizontal?"w-1/3":"w-full h-56"} object-cover object-center`}
         src={image}

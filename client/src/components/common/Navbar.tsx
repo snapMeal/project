@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <>
       <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
-      <div className="h-20" />
+      <div className="md:h-20" />
       <header
         className={`fixed top-0 left-0 w-full bg-background/50 backdrop-blur hidden md:block z-20`}
       >

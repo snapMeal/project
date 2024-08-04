@@ -46,6 +46,12 @@ export default function SigninModal(props:{setIsSignedIn: (val:boolean) => void}
 
         try {
             //TODO VALIDATION ADMIN
+            if(username.value !== "admin" || password.value !== "admin"){
+                toast.error("Invalid Credentials", {
+                    position: "bottom-right",
+                });
+                return;
+            }
             props.setIsSignedIn(true);
             // let response = await axios.post("/user/login", {
             //     username: username.value,

@@ -13,7 +13,7 @@ function DashboardPage() {
     <>
       <Navbar  />
       <main className="container mx-auto px-4">
-        <FeaturedSection />
+        <FeaturedSection className="mt-8"/>
         <section className="mt-16">
           <h1 className="font-bold text-3xl md:text-6xl mb-8">
             What Are You Craving?

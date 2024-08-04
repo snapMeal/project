@@ -25,9 +25,9 @@ function LandingPage() {
                   Signup
                 </Button>
               </Link>
-              <Link className="w-full" to="/signin">
+              <Link className="w-full" to="/dashboard">
                 <Button className="w-full" color={"secondary"}>
-                  Signin
+                  View Menu
                 </Button>
               </Link>
             </div>

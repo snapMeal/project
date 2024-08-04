@@ -95,6 +95,7 @@ function App() {
                                 (
                                     <>
                                         <Route path="/" element={<LandingPage />} />
+                                        <Route path="/Dashboard" element={<DashboardPage />} />
                                         <Route path="/signin" element={<SignInPage />} />
                                         <Route path="/signup" element={<SignUpPage />} />
                                     </>

@@ -89,6 +89,13 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
           {cart.length > 0 ? (
             <Button
               onClick={async () => {
+                const Authorization = localStorage.getItem("token");
+                if(!Authorization){
+                  toast.error("Please login to place order", {
+                    position: "bottom-right",
+                  });
+                  return;
+                }
                 if (
                   !(await modal?.CreateModal(
                     "Confirmation",
@@ -100,6 +107,7 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
                   return;
                 }
                 try {
+
                   let response = await axios.post(
                     "/order",
                     {
@@ -107,7 +115,7 @@ function Cart(props: { cartOpen: boolean; setCartOpen: (prev: any) => any }) {
                     },
                     {
                       headers: {
-                        Authorization: `${localStorage.getItem("token")}`,
+                        Authorization: Authorization,
                       },
                     },
                   );

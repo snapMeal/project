@@ -46,6 +46,7 @@ function App() {
     }, []);
 
     const { setMenu } = useReduxAction();
+    console.log(DashboardPage());
 
     async function GetMenu() {
         try {
